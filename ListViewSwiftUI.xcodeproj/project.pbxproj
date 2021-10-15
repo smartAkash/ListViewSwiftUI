@@ -11,6 +11,7 @@
 		385D509E27198DB400E2DFBC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385D509D27198DB400E2DFBC /* ContentView.swift */; };
 		385D50A027198DB600E2DFBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 385D509F27198DB600E2DFBC /* Assets.xcassets */; };
 		385D50A327198DB600E2DFBC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 385D50A227198DB600E2DFBC /* Preview Assets.xcassets */; };
+		385D50AD271994CC00E2DFBC /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 385D50AC271994CC00E2DFBC /* SwiftUIRefresh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				385D50AD271994CC00E2DFBC /* SwiftUIRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = ListViewSwiftUI;
+			packageProductDependencies = (
+				385D50AC271994CC00E2DFBC /* SwiftUIRefresh */,
+			);
 			productName = ListViewSwiftUI;
 			productReference = 385D509827198DB400E2DFBC /* ListViewSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 385D508F27198DB400E2DFBC;
+			packageReferences = (
+				385D50AB271994CC00E2DFBC /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+			);
 			productRefGroup = 385D509927198DB400E2DFBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -341,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		385D50AB271994CC00E2DFBC /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		385D50AC271994CC00E2DFBC /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 385D50AB271994CC00E2DFBC /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 385D509027198DB400E2DFBC /* Project object */;
 }
