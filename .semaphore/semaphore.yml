@@ -8,3 +8,4 @@ agent:
           - cache restore
           - bundle install --path vendor/bundle
           - cache store
+            swift build -v
