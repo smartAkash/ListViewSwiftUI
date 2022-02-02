@@ -10,14 +10,15 @@ import SwiftUIRefresh
 
 struct ContentView: View {
     var body: some View {
-        ScrollView{
-        VStack{
-            navListView.frame(height: 300, alignment: .center)
-                onlyList.frame(height: 300, alignment: .center)
-                listViewForLoop.frame(height: 300, alignment: .center)
-                sectionGroupListView.frame(height: 300, alignment: .center)
-            }
-        }
+//        ScrollView{
+//        VStack{
+//            navListView.frame(height: 300, alignment: .center)
+//                onlyList.frame(height: 300, alignment: .center)
+//                listViewForLoop.frame(height: 300, alignment: .center)
+//                sectionGroupListView.frame(height: 300, alignment: .center)
+        listViewWithPullToRefresh.padding(.top, 20)
+//            }
+//        }
     }
     
     var onlyList: some View {
@@ -101,7 +102,6 @@ struct ContentView: View {
         NewsItem(id: 0, title: "Want the latest news?", strap: "Pull to refresh!")
     ]
     
-    @State private var isShowing = false
     var sectionGroupListView: some View {
         List {
             ForEach(news) { item in
@@ -112,11 +112,31 @@ struct ContentView: View {
                     }
                 }
             }
-        }.listStyle(GroupedListStyle()).pullToRefresh(isShowing: $isShowing) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.isShowing = false
+        }.listStyle(GroupedListStyle())
+    }
+    
+    @State private var isShowing = false
+
+    var listViewWithPullToRefresh: some View {
+        List {
+                Text("Item 1")
+                Text("Item 2")
             }
-        }
+            .pullToRefresh(isShowing: $isShowing) {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isShowing = false
+//                }
+            }
+//        List {
+//            ForEach (news) {
+//                (country) in
+//                Text(country.title)
+//            }
+//        }.pullToRefresh(isShowing: $isShowing) {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.isShowing = false
+//            }
+//        }
     }
     
     
@@ -140,5 +160,67 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+@available(iOS 15.0, *)
+struct PostForEachPull: View {
+    
+    var body: some View {
+        ScrollViewPullRefresh {
+            VStack {
+                Text("testing......")
+                Text("testing......")
+                Text("testing......")
+            }.frame(maxWidth: .infinity).background(Color.red).frame(height: 200)
+        }
+        .refreshable {
+            debugPrint("Refreshed......")
+        }
+    }
+}
+
+@available(iOS 15.0, *)
+struct PostForEachPull_Previews: PreviewProvider {
+    static var previews: some View {
+        PostForEachPull()
+    }
+}
+
+struct PostForEach: View {
+    var lazy:Bool = false
+    
+    var body: some View {
+        RefreshableScrollView(action: refreshList) {
+            if isLoading {
+                VStack {
+                    ProgressView()
+                }
+            }
+            if lazy {
+                LazyVStack {
+                    Text("Testing.....").padding(.top, 30).padding(.leading, 20)
+                }
+            }
+            else {
+                VStack {
+                    Text("Testing.....").padding(.top, 30).padding(.leading, 20)
+                }
+            }
+        }.background(Color.red.opacity(0.5))
+    }
+    
+    @State private var isLoading = false
+    private func refreshList() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            isLoading = false
+        }
+    }
+}
+
+struct PostForEach_Previews: PreviewProvider {
+    static var previews: some View {
+        PostForEach()
     }
 }

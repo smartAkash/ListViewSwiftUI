@@ -1,0 +1,5 @@
+workflows:
+  ListViewSwiftUI:
+    name: ListViewSwiftUI
+    scripts:
+        - echo "Welcom ListViewSwiftUI POC"

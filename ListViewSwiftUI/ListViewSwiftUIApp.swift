@@ -11,7 +11,7 @@ import SwiftUI
 struct ListViewSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PostForEachPull()
         }
     }
 }
