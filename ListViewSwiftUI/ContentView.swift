@@ -10,15 +10,15 @@ import SwiftUIRefresh
 
 struct ContentView: View {
     var body: some View {
-//        ScrollView{
-//        VStack{
-//            navListView.frame(height: 300, alignment: .center)
-//                onlyList.frame(height: 300, alignment: .center)
-//                listViewForLoop.frame(height: 300, alignment: .center)
-//                sectionGroupListView.frame(height: 300, alignment: .center)
-        listViewWithPullToRefresh.padding(.top, 20)
-//            }
-//        }
+        ScrollView{
+        VStack{
+            navListView.frame(height: 300, alignment: .center)
+                onlyList.frame(height: 300, alignment: .center)
+                listViewForLoop.frame(height: 300, alignment: .center)
+                sectionGroupListView.frame(height: 300, alignment: .center)
+//                listViewWithPullToRefresh.padding(.top, 20)
+            }
+        }
     }
     
     var onlyList: some View {
